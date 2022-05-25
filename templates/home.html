@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div >
+<div class="form">
 {% if user.is_authenticated %}
   Hi {{ user.username }}!<br>
 
@@ -12,7 +12,8 @@
 
 {% else %}
   <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
-  <a href="{% url 'registration' %}">Sign Up</a>
+  <a class="button" href="{% url 'login' %}">Log In</a>
+  <a class="button"  href="{% url 'registration' %}">Sign Up</a>
 {% endif %}
 {% endblock %}
+</div>

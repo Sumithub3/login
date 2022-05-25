@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-        <h1>Sign Up Form</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button class="button">Sign Up</button>
-        </form>
+<form method="post" class="form">
+    <h2>Sign Up Now</h2>
+    {% csrf_token %}
+        {% for fm in form %}
+        {{fm.label_tag}}
+
+    {{fm}}
+
+        {% if fm.errors %}
+           <ul style="list-style-type: none; color:red">
+                {% for error in fm.errors %}
+                    <li><strong>{{ error|escape }}</strong></li>
+                {% endfor %}
+           </ul>
+        {% endif %}
+    {% endfor %}
+        <button class="button">Sign Up</button>
+    </form>
 {% endblock %}
